@@ -1,3 +1,5 @@
+//Made by MANMEET SINGH NARULA, MCA - D2111 , LOVELY PROFESSIONAL UNIVERSITY , REG NO.- 12104278.
+
 #include<iostream>
 using namespace std;
 
