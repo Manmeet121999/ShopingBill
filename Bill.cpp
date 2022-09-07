@@ -1,71 +1,66 @@
 //Made by MANMEET SINGH NARULA, MCA - D2111 , LOVELY PROFESSIONAL UNIVERSITY , REG NO.- 12104278.
 
-#include<iostream>
+#include <iostream>
+#include<map>
 using namespace std;
 
-class ItemDetails
+double totalAmount(int product, int amount, int gst)
 {
-    public:
-        int item_no;
-        char item_name[50];
-        float item_price,GST;
-};
-class DiscountedItem : public ItemDetails
+
+    if (product > 500)
+    {
+        product = product - ((product * 5) / 100);
+    }
+    if (gst == 0)
+        int gstAmount = 1;
+    int gstAmount = (product * amount * gst) / 100;
+    return product + gstAmount;
+}
+
+double maxGST(int product, int amount, int gst)
 {
-    public:
-        int discount_percent;
-        int discounted_price;
-        void accept_details()
-        {
-                cout<<"\n Enter Item Name : ";
-                cin>>item_name;
-                cout<<"\n Quantity : ";
-                cin>>item_no;
-                cout<<"\n Enter Item Price : ";
-                cin>>item_price;
-                cout<<"\n Enter Discount Percent : ";
-                cin>>discount_percent;
-                cout<<"\n Enter GST % = ";
-                cin>>GST;
-                cout<<"\n ----------------------\n";
-                discounted_price = item_price - item_price * discount_percent / 100;
-        }
-        void display_details()
-        {
-                cout<<"\n Item Name : "<<item_name;
-                cout<<"\n Quantity : "<<item_no;
-                cout<<"\n Item Price : "<<item_price;
-                cout<<"\n Discount Percent : "<<discount_percent;
-                cout<<"\n Discounted Price : "<<discounted_price;
-                cout<<"\n GST : "<<GST;
-                cout<<"\n ----------------------";
-        }
-};
+    if (gst == 0)
+        int gst = 1;
+
+    return gst = (product * amount * gst) / 100;
+}
+void find_greatest(double a, double b, double c, double d)
+{
+    double x = max(a, max(b, max(c, d)));
+    if (x == a)
+        cout << "Leather Wallet has maximum GST";
+    if (x == b)
+        cout << "Umbrella has maximum GST";
+    if (x == c)
+        cout << "Cigarette maximum GST";
+    if (x == d)
+        cout << " Honey has maximum GST";
+}
+
 int main()
 {
-        int i, cnt, discount = 0, price = 0 ,fp=0,GST=0;
-        DiscountedItem dt[100];
-        cout<<"\n How many items you want to enter? : ";
-        cin>>cnt;
-        for(i=1; i<=cnt; i++)
-        {
-                dt[i].accept_details();
-        }
-        for(i=1;i<=cnt;i++)
-        {
-                dt[i].display_details();
-        }
-        for(i=1;i<=cnt;i++)
-        {
-                price = price + dt[i].item_price;
-        }
-        for(i=1;i<=cnt;i++)
-        {
-                discount = discount + dt[i].item_price-dt[i].discounted_price;
-        }
-        cout<<"\n Total Price : "<<price;
-        cout<<"\n Total Discount : "<<discount;
-        fp = price - discount;
-        cout<<"\n Final price : "<<fp;
-        return 0;
+
+    int leatherWallet = 1100;
+    int umbrella = 900;
+    int cigarette = 200;
+    int honey = 100;
+    // Answer for question 1
+    int amountToPay = totalAmount(leatherWallet, 1, 18) + totalAmount(umbrella, 2, 12) + totalAmount(cigarette, 3, 28) + totalAmount(honey, 4, 0);
+    cout << "Customer will pay " << amountToPay << "Rs." << endl;
+
+    // Question 2
+    double num1 = maxGST(leatherWallet, 1, 18);
+    double num2 = maxGST(umbrella, 2, 12);
+    double num3 = maxGST(cigarette, 3, 28);
+    double num4 = maxGST(honey, 4, 0);
+
+    find_greatest(num1, num2, num3, num4);
+
+    // Question 3
+     
+     map<string,double,int>items={{"leatherWallet", 1, 18},{"umbrella", 2, 12},{"cigarette", 3, 28},{"honey", 4, 0}};
+
+//
+
+    return 0;
 }
